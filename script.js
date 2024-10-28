@@ -12,12 +12,17 @@ function updateSummary() {
     updatedExp.innerText = totalExpense;
     updatedBal.innerText = totalIncome - totalExpense;
 }
-
+let tableEntries = [
+    // { type: 1, name: "income", amount: 25000, description: "Monthly Salary" },
+    // { type: 0, name: "rent", amount: 18000, description: "Apartment Rent" },
+    // { type: 0, name: "food", amount: 5000, description: "Groceries" },
+];
+ 
 function addItem() {
     let type = itemType.value;
     let name = document.getElementById("name");
     let amount = document.getElementById("amount");
-    let description = document.getElementById("description"); // Get the description
+    let description = document.getElementById("description"); 
     // Input validation
     if (name.value === "" || Number(amount.value) === 0)
         return alert("Incorrect Input");
@@ -62,12 +67,12 @@ function loadItems(e, i) {
     c6.addEventListener("click", () => editItem(e));
     if (e.type == 0) {
         cls = "red";
-        c4.innerHTML = "&#10138;";
-        row.style.backgroundColor = "lightcoral"; // Set background for expense
+        c4.innerHTML = "&#10138;"; 
+        row.style.backgroundColor = "lightcoral";
     } else {
         cls = "green";
-        c4.innerHTML = "&#10136;";
-        row.style.backgroundColor = "lightgreen"; // Set background for income
+        c4.innerHTML = "&#10136;"; 
+        row.style.backgroundColor = "lightgreen"; 
     }
     c4.style.color = cls;
 }
@@ -88,12 +93,12 @@ function editItem(el) {
     let amount = document.getElementById("amount");
     let type = document.getElementById("itemType");
     let description = document.getElementById("description"); 
-   
+    // Set the current values in the form fields
     name.value = el.name;
     amount.value = el.amount;
     type.value = el.type;
     description.value = el.description; 
-   
+    // Remove the old entry
     del(el);
 }
 
@@ -117,7 +122,7 @@ function updateTable() {
     });
     updateSummary();
 }
-// Event listener for radio button change
+
 document.querySelectorAll('input[name="filter"]').forEach((radio) => {
     radio.addEventListener("change", updateTable);
 });

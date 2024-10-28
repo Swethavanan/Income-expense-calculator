@@ -48,7 +48,7 @@ body {
     box-shadow: 0 4px 8px 0 rgba(92, 202, 42, .2);
     min-height: 30vh;
   }
-  .vline {
+  .verticle{
     margin: 0 2%;
     border-width: 2px;
   }
